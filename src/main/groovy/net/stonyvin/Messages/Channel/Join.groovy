@@ -1,6 +1,6 @@
-package net.stonyvin.Messages.Channel
+package net.stonyvin.messages.channel
 
-import net.stonyvin.Messages.Message
+import net.stonyvin.messages.Message
 
 class Join extends Message {
     Map<String, String> channels

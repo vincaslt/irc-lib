@@ -1,6 +1,6 @@
 package net.stonyvin.modules
 
-import net.stonyvin.Messages.Channel.Join
+import net.stonyvin.messages.channel.Join
 import net.stonyvin.util.IRCSocket
 
 class Channel extends Module {

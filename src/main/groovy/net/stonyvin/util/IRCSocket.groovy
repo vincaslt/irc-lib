@@ -1,6 +1,6 @@
 package net.stonyvin.util
 
-import net.stonyvin.Messages.Message
+import net.stonyvin.messages.Message
 import net.stonyvin.modules.Misc
 
 class IRCSocket {

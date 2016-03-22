@@ -1,6 +1,6 @@
-package net.stonyvin.Messages.Misc
+package net.stonyvin.messages.misc
 
-import net.stonyvin.Messages.Message
+import net.stonyvin.messages.Message
 
 class Pong extends Message{
     String daemon

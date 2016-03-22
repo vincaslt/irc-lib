@@ -1,6 +1,6 @@
-package net.stonyvin.Messages.Connection
+package net.stonyvin.messages.connection
 
-import net.stonyvin.Messages.Message
+import net.stonyvin.messages.Message
 
 class Nick extends Message {
     String username

@@ -1,6 +1,6 @@
 package net.stonyvin.modules
 
-import net.stonyvin.Messages.Connection.Nick
+import net.stonyvin.messages.connection.Nick
 import net.stonyvin.util.IRCSocket
 
 class Connection extends Module {
@@ -12,7 +12,7 @@ class Connection extends Module {
     }
 
     void userCommand(String hostname, String realName) {
-        socket.write(new net.stonyvin.Messages.Connection.User(username, hostname, socket.host, realName))
+        socket.write(new net.stonyvin.messages.connection.User(username, hostname, socket.host, realName))
     }
 
     void nickCommand() {
