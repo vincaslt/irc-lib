@@ -1,14 +1,15 @@
 # irc-lib
 A basic IRC library for computer networks CS course in university.
 
-### Usage example:
+### Usage Example:
 
     IRCLib irc = new IRCLib("irc.data.lt", "username")
     irc.connection.nickCommand()
     irc.connection.userCommand("localhost", "Name Surname")
-    irc.channel.joinCommand(["#krantas": ""])
+    irc.channel.joinCommand("#krantas", "")
+    irc.sending.privMsgCommand("#krantas", "Hello World!")
 
-### Currently implemented
+### Currently Implemented
 
 * Connecting to IRC servers via sockets
 * Ident authentication server
@@ -18,3 +19,10 @@ A basic IRC library for computer networks CS course in university.
  * Nick
  * User
  * Pong
+ * Privmsg
+
+### To Do
+
+* Remaining commands
+* Configurable output settings
+* Client example

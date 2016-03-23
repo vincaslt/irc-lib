@@ -10,11 +10,6 @@ class Nick extends Message {
     }
 
     @Override
-    String translateResponse(int responseCode) {
-        return null
-    }
-
-    @Override
     String toString() {
         return "NICK ${username}"
     }

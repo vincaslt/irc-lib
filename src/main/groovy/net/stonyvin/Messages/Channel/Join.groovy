@@ -10,16 +10,6 @@ class Join extends Message {
     }
 
     @Override
-    String translateResponse(int responseCode) {
-        switch (responseCode) {
-            case 0:
-                return "Invalid parameter count!"
-            case 1:
-                return "User with this name is already registered!"
-        }
-    }
-
-    @Override
     String toString() {
         return "JOIN ${channels.collect {k, v -> k}.join(",")} ${channels.collect {k, v -> v}.join(",")}"
     }
