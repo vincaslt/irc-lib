@@ -26,3 +26,4 @@ A basic IRC library for computer networks CS course in university.
 * Remaining commands
 * Configurable output settings
 * Client example
+vincas is lietuvos
