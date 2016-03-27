@@ -28,7 +28,24 @@ class IRCLib {
         channel = new Channel(socket)
         misc = new Misc(socket)
         sending = new Sending(socket)
-        socket.startInputThread(misc)
+        socket.start(misc)
+    }
 
+    /**
+        Waits for any pending executions to finish, and closes the connection.
+     */
+    void exit() {
+        Thread.start {
+            while (socket.isProcessing()) {}
+            socket.close()
+        }
+    }
+
+    /**
+     * Immediately closes the connection. Any remaining messages at the
+     * time of abortion will not be sent.
+     */
+    void abort() {
+        socket.close()
     }
 }

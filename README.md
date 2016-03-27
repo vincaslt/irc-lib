@@ -5,9 +5,10 @@ A basic IRC library for computer networks CS course in university.
 
     IRCLib irc = new IRCLib("irc.data.lt", "username")
     irc.connection.nickCommand()
-    irc.connection.userCommand("localhost", "Name Surname")
+    irc.connection.userCommand("Name Surname")
     irc.channel.joinCommand("#krantas", "")
     irc.sending.privMsgCommand("#krantas", "Hello World!")
+    irc.exit()
 
 ### Currently Implemented
 
@@ -26,4 +27,3 @@ A basic IRC library for computer networks CS course in university.
 * Remaining commands
 * Configurable output settings
 * Client example
-vincas is lietuvos

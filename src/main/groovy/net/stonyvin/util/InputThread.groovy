@@ -15,20 +15,29 @@ class InputThread extends Thread {
     @Override
     void run() {
         String line = null
-        while (!quit && (line = reader.readLine()) != null) {
-            Logging.instance.log("IN: ${line}")
-            if (line.toUpperCase().startsWith("PING ")) {
-                miscModule.pongCommand(line.substring(5))
+        try {
+            while (!quit) {
+                if ((line = reader.readLine()) != null) {
+                    Logging.instance.log("IN: ${line}")
+                    if (line.toUpperCase().startsWith("PING ")) {
+                        miscModule.pongCommand(line.substring(5))
+                    }
+                }
             }
+        } catch (SocketException e) {
+            Logging.instance.log("ERROR: " + e.getMessage())
         }
     }
 
-    Boolean isProcessing() {
+    synchronized boolean isProcessing() {
+        if (quit) {
+            return false
+        }
         return reader.ready()
     }
 
     void exit() {
-        while (isProcessing()) {}
         quit = true
+        reader.close()
     }
 }

@@ -3,6 +3,7 @@ package net.stonyvin.util
 class IdentServer extends Thread {
     private String username
     private boolean registered = false
+    private boolean exit = false
 
     private BufferedReader identIn
 
@@ -21,19 +22,25 @@ class IdentServer extends Thread {
             BufferedWriter identOut = new BufferedWriter(
                     new OutputStreamWriter(identCl.getOutputStream()))
             String line = null;
-            while ((line = identIn.readLine()) != null) {
+            while ((line = identIn.readLine()) != null && exit != true) {
                 Logging.instance.log("IDENT: " + line)
                 line = line + " : USERID : UNIX : ${this.username}\r\n"
                 identOut.write(line)
                 identOut.flush()
                 registered = true
             }
+            identServ.close()
+            identOut.close()
         } catch (IOException e) {
             e.printStackTrace()
         }
     }
 
-    public synchronized boolean isRegistered() {
+    void exit() {
+        exit = true
+    }
+
+    boolean isRegistered() {
         return registered && !identIn.ready()
     }
 }

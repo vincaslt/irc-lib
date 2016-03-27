@@ -15,6 +15,14 @@ class Connection extends Module {
         socket.write(new net.stonyvin.messages.connection.User(username, hostname, socket.host, realName))
     }
 
+    void userCommand(String realName) {
+        socket.write(new net.stonyvin.messages.connection.User(username, getLocalHost(), socket.host, realName))
+    }
+
+    private getLocalHost() {
+        return InetAddress.getLocalHost().getHostAddress()
+    }
+
     void nickCommand() {
         socket.write(new Nick(username))
     }

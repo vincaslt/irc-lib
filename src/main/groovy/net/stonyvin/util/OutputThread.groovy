@@ -22,12 +22,13 @@ class OutputThread extends Thread {
             if (!inputThread.isProcessing() && socket.isRegistered()) {
                 Message message = getNextMessage()
                 if (message != null) {
-                    Logging.instance.log ("OUT: ${message}")
+                    Logging.instance.log("OUT: ${message}")
                     writer.write(message.toString() + "\r\n")
                     writer.flush()
                 }
             }
         }
+        writer.close()
     }
 
     synchronized private Message getNextMessage() {
@@ -35,6 +36,10 @@ class OutputThread extends Thread {
             return queue.poll()
         else
             return null
+    }
+
+    synchronized boolean hasMessages() {
+        return queue.size() > 0;
     }
 
     synchronized void write(Message message) {

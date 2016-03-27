@@ -9,7 +9,7 @@ class Channel extends Module {
     }
 
     void joinCommand(String channel, String key) {
-        joinCommand([channel : key])
+        joinCommand([(channel) : key])
     }
 
     void joinCommand(Map<String, String> channels) {
