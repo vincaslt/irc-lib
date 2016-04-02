@@ -11,15 +11,11 @@ class Connection extends Module {
         this.username = username
     }
 
-    void userCommand(String hostname, String realName) {
+    void userCommand(String hostname = getLocalHost(), String realName) {
         socket.write(new net.stonyvin.messages.connection.User(username, hostname, socket.host, realName))
     }
 
-    void userCommand(String realName) {
-        socket.write(new net.stonyvin.messages.connection.User(username, getLocalHost(), socket.host, realName))
-    }
-
-    private getLocalHost() {
+    private String getLocalHost() {
         return InetAddress.getLocalHost().getHostAddress()
     }
 

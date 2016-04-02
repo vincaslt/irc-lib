@@ -17,19 +17,20 @@ class InputThread extends Thread {
         String line = null
         try {
             while (!quit) {
-                if ((line = reader.readLine()) != null) {
+                if (reader.ready() && (line = reader.readLine()) != null) {
                     Logging.instance.log("IN: ${line}")
                     if (line.toUpperCase().startsWith("PING ")) {
                         miscModule.pongCommand(line.substring(5))
                     }
                 }
             }
+            reader.close()
         } catch (SocketException e) {
             Logging.instance.log("ERROR: " + e.getMessage())
         }
     }
 
-    synchronized boolean isProcessing() {
+    boolean isProcessing() {
         if (quit) {
             return false
         }
@@ -38,6 +39,5 @@ class InputThread extends Thread {
 
     void exit() {
         quit = true
-        reader.close()
     }
 }

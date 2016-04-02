@@ -36,7 +36,7 @@ class IRCLib {
      */
     void exit() {
         Thread.start {
-            while (socket.isProcessing()) {}
+            while (socket.isProcessing()) { }
             socket.close()
         }
     }

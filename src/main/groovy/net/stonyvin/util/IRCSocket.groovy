@@ -44,13 +44,14 @@ class IRCSocket {
     }
 
     boolean isProcessing() {
-        return outputThread.hasMessages() || inputThread.isProcessing()
+        def f = outputThread.hasMessages() || inputThread.isProcessing()
+        return f
     }
 
     void close() {
         identServer.exit()
-        inputThread.exit()
         outputThread.exit()
+        inputThread.exit()
         socket.close()
     }
 }

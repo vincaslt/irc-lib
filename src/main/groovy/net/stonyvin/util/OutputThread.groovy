@@ -38,7 +38,7 @@ class OutputThread extends Thread {
             return null
     }
 
-    synchronized boolean hasMessages() {
+    boolean hasMessages() {
         return queue.size() > 0;
     }
 
