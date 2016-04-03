@@ -14,7 +14,7 @@ class InputThread extends Thread {
 
     @Override
     void run() {
-        String line = null
+        String line
         try {
             while (!quit) {
                 if (reader.ready() && (line = reader.readLine()) != null) {
@@ -30,7 +30,7 @@ class InputThread extends Thread {
         }
     }
 
-    boolean isProcessing() {
+    synchronized boolean isProcessing() {
         if (quit) {
             return false
         }

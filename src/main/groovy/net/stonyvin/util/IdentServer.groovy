@@ -21,13 +21,15 @@ class IdentServer extends Thread {
                     new InputStreamReader(identCl.getInputStream()))
             BufferedWriter identOut = new BufferedWriter(
                     new OutputStreamWriter(identCl.getOutputStream()))
-            String line = null;
-            while ((line = identIn.readLine()) != null && exit != true) {
-                Logging.instance.log("IDENT: " + line)
-                line = line + " : USERID : UNIX : ${this.username}\r\n"
-                identOut.write(line)
-                identOut.flush()
-                registered = true
+            String line;
+            while (exit != true) {
+                if (identIn.ready() && (line = identIn.readLine()) != null) {
+                    Logging.instance.log("IDENT: " + line)
+                    line = line + " : USERID : UNIX : ${this.username}\r\n"
+                    identOut.write(line)
+                    identOut.flush()
+                    registered = true
+                }
             }
             identServ.close()
             identOut.close()
