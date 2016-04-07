@@ -16,6 +16,7 @@ class IRCLib {
     Channel channel
     Misc misc
     Sending sending
+    User user
 
     IRCLib(String host, String username) {
         this(host, 6667, username)
@@ -25,6 +26,7 @@ class IRCLib {
         this.username = username
         socket = new IRCSocket(host, port, username)
         connection = new Connection(socket, username)
+        user = new User(socket)
         channel = new Channel(socket)
         misc = new Misc(socket)
         sending = new Sending(socket)

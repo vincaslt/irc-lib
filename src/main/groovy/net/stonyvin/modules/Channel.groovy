@@ -2,6 +2,7 @@ package net.stonyvin.modules
 
 import net.stonyvin.messages.channel.Join
 import net.stonyvin.messages.channel.List
+import net.stonyvin.messages.channel.Names
 import net.stonyvin.util.IRCSocket
 
 class Channel extends Module {
@@ -23,5 +24,9 @@ class Channel extends Module {
 
     void listCommand(java.util.List<String> channels = []) {
         socket.write(new List(channels))
+    }
+
+    void namesCommand(java.util.List<String> channels = []) {
+        socket.write(new Names(channels))
     }
 }
